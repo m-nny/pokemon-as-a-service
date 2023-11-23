@@ -1,9 +1,9 @@
 import test from 'ava'
 import { tradeEvolution, trainerVerify, swap } from '../gts.utils'
 import { Users } from '../db-types'
-import {Pokemon } from '../../../shared/src/badge3'
-import { Bulbasaur, Graveler, Ivysaur, Machoke, Poliwhirl, Charmeleon, Machamp, Golem, Politoed } from '../../../shared/src/gen/type-pokemon-ids'
-import * as P from '../../../shared/src/gen/type-pokemon'
+import {Pokemon } from '.@paas/shared/lib/badge3'
+import { Bulbasaur, Graveler, Ivysaur, Machoke, Poliwhirl, Charmeleon, Machamp, Golem, Politoed } from '.@paas/shared/lib/gen/type-pokemon-ids'
+import * as P from '.@paas/shared/lib/gen/type-pokemon'
 
 test('Evolutions map', t => {
   const machokeEvolution = tradeEvolution('potw-067', undefined, 'potw-001')!

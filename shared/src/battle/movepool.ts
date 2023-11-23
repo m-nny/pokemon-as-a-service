@@ -1,12 +1,12 @@
 import { Pokemon, Move, logDamage, Status, Stat, Log, logHeal, MoveInput, statBuff } from "./types"
 import { StatusMap, StatusId, ConditionMap, ConditionId } from "./status"
-import * as Pkmn from '../../../shared/src/pokemon'
+import * as Pkmn from '../pokemon'
 import randomItem from "../random-item"
 import { Weathers } from "./weather"
-import { TerrainType, } from "../../../shared/src/locations-list"
-import { Type, types } from "../../../shared/src/pokemon/types"
-import { ITEMS, ItemId, BerryId } from "../../../shared/src/items-list"
-import { MoveId } from '../../../shared/src/gen/type-move-meta'
+import { TerrainType, } from "../locations-list"
+import { Type, types } from "../pokemon/types"
+import { ITEMS, ItemId, BerryId } from "../items-list"
+import { MoveId } from '../gen/type-move-meta'
 import { getCondition, removeCondition } from './conditions'
 import * as T from './terrain'
 import { ZMoveEffects } from './zmoves'

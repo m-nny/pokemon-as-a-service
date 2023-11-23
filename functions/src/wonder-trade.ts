@@ -1,13 +1,13 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { salamander } from '@fleker/salamander';
-import {Badge} from '../../shared/src/badge3'
-import {F, WonderTradeEntry, WonderTradeStatus} from '../../shared/src/server-types'
+import {Badge} from '@paas/shared/lib/badge3'
+import {F, WonderTradeEntry, WonderTradeStatus} from '@paas/shared/lib/server-types'
 import { removePokemon } from './users.utils';
 import { swapNoCheck } from './gts.utils';
 import {Users} from './db-types'
 import {Notification, sendNotification} from './notifications'
-import * as Sprite from '../../shared/src/sprites'
+import * as Sprite from '@paas/shared/lib/sprites'
 
 const db = salamander(admin.firestore())
 const FieldValue = admin.firestore.FieldValue;

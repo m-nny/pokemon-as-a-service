@@ -1,11 +1,11 @@
 // Generate API key via MakerSuite
 import {key} from './palm.key'
 import * as functions from 'firebase-functions'
-import { F } from '../../shared/src/server-types'
+import { F } from '@paas/shared/lib/server-types'
 import fetch from 'node-fetch';
-import { ITEMS } from '../../shared/src/items-list';
-import { datastore } from '../../shared/src/pokemon';
-import { Movepool } from '../../shared/src/battle/movepool';
+import { ITEMS } from '@paas/shared/lib/items-list';
+import { datastore } from '@paas/shared/lib/pokemon';
+import { Movepool } from '@paas/shared/lib/battle/movepool';
 
 // Prompt to perform retrieval augmented generation
 const ragPrompt = `

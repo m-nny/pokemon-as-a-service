@@ -1,10 +1,10 @@
-import { Badge, MATCH_EXACT } from '../../shared/src/badge3'
-import { Potw } from '../../shared/src/badge2'
-import * as P from '../../shared/src/gen/type-pokemon'
+import { Badge, MATCH_EXACT } from '@paas/shared/lib/badge3'
+import { Potw } from '@paas/shared/lib/badge2'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
 import { Users } from "./db-types"
-import { ItemId } from '../../shared/src/items-list'
+import { ItemId } from '@paas/shared/lib/items-list'
 import { hasItem, awardItem, hasPokemon, removePokemon, addPokemon } from "./users.utils"
-import { BadgeId, PokemonId } from '../../shared/src/pokemon/types';
+import { BadgeId, PokemonId } from '@paas/shared/lib/pokemon/types';
 
 export type ItemBasedFunction = (item?: ItemId) => string
 
@@ -320,6 +320,7 @@ export const trainerVerify = (user: Users.Doc, species: PokemonId, item?: ItemId
  * @param otherBadge Pokemon being traded with this one, used for Shelmet/Karrablast.
  * @returns An object including an ItemEntry
  */
+export const swap = (origin: any, destination: any, destinationId: any, badge: any, item: any, otherBadge: any) => {
   if (!hasPokemon(origin, badge)) {
     throw new Error(`Origin does not have Pokémon ${badge}: -1`)
   }

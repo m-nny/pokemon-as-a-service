@@ -1,22 +1,22 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { TeamsBadge } from '../../shared/src/badge2';
+import { TeamsBadge } from '@paas/shared/lib/badge2';
 import { getDayCareHistory } from './day-care';
 import { Users } from './db-types';
-import { POKEDOLL, SHINY_CHARM, POKEDEX_QUESTS, PokedexQuest } from '../../shared/src/quests';
+import { POKEDOLL, SHINY_CHARM, POKEDEX_QUESTS, PokedexQuest } from '@paas/shared/lib/quests';
 import { genAdventureLog, ItemEntry } from './items';
-import { Globe } from '../../shared/src/locations-list';
+import { Globe } from '@paas/shared/lib/locations-list';
 import { clear, readPokedex } from './adventure-log';
 import * as A from './adventure-log';
 import { salamander } from '@fleker/salamander';
-import { regions } from '../../shared/src/pokedex';
-import { Location } from '../../shared/src/locations-list';
-import { registerShinyRegion, Requirements } from '../../shared/src/legendary-quests';
-import { getAllPokemon } from '../../shared/src/badge-inflate';
-import { F } from '../../shared/src/server-types';
+import { regions } from '@paas/shared/lib/pokedex';
+import { Location } from '@paas/shared/lib/locations-list';
+import { registerShinyRegion, Requirements } from '@paas/shared/lib/legendary-quests';
+import { getAllPokemon } from '@paas/shared/lib/badge-inflate';
+import { F } from '@paas/shared/lib/server-types';
 import { assert } from '@fleker/gents';
-import { Badge } from '../../shared/src/badge3';
-import { PokemonId } from '../../shared/src/pokemon/types';
+import { Badge } from '@paas/shared/lib/badge3';
+import { PokemonId } from '@paas/shared/lib/pokemon/types';
 import { obtainUsernameFromEmail, verifyUserEmail } from './vendor/example-tasks'
 
 const db = salamander(admin.firestore())

@@ -1,8 +1,8 @@
 /* eslint-disable no-prototype-builtins */
 import { Users } from "./db-types"
-import { ITEMS, ItemId } from "../../shared/src/items-list"
-import { PokemonId } from "../../shared/src/pokemon/types"
-import { Badge, MATCH_GTS } from "../../shared/src/badge3"
+import { ITEMS, ItemId } from "@paas/shared/lib/items-list"
+import { PokemonId } from "@paas/shared/lib/pokemon/types"
+import { Badge, MATCH_GTS } from "@paas/shared/lib/badge3"
 
 export const hasItem = (user: Users.Doc, item: ItemId, count = 1) => {
   if (!ITEMS.hasOwnProperty(item)) {

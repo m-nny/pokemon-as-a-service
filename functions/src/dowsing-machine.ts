@@ -5,9 +5,9 @@ import {
   MAGNETTRAIN_PASS,
   DITTOS,
   GLOBAL_QUESTS
-} from '../../shared/src/quests'
-import * as L from '../../shared/src/legendary-quests'
-import * as Q from '../../shared/src/quests'
+} from '@paas/shared/lib/quests'
+import * as L from '@paas/shared/lib/legendary-quests'
+import * as Q from '@paas/shared/lib/quests'
 import {
   sudowoodoArray,
   magnetTrainIds,
@@ -17,24 +17,24 @@ import {
   radioQuizHiddenIds,
 } from './dowsing-badge'
 import * as Utils from './utils'
-import * as Sprite from '../../shared/src/sprites'
-import * as Pkmn from '../../shared/src/pokemon'
-import { Badge } from '../../shared/src/badge3';
-import { ITEMS, ItemId } from '../../shared/src/items-list'
-import * as P from '../../shared/src/gen/type-pokemon'
+import * as Sprite from '@paas/shared/lib/sprites'
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import { Badge } from '@paas/shared/lib/badge3';
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
 import { OptCapt } from './dowsing-machine.utils'
 import { getLocation } from './location'
-import { Location } from '../../shared/src/locations-list'
-import { Questions } from '../../shared/src/radio-quiz'
+import { Location } from '@paas/shared/lib/locations-list'
+import { Questions } from '@paas/shared/lib/radio-quiz'
 import { salamander, SalamanderRef, SalamanderSnapshot, SalamanderTxn } from '@fleker/salamander'
 import { DowsingHiddenItem, Users } from './db-types'
-import { BadgeId } from '../../shared/src/pokemon/types';
+import { BadgeId } from '@paas/shared/lib/pokemon/types';
 import { shinyRate } from './platform/game-config'
 import {toRequirements} from './users'
 import { addPokemon, hasItem } from './users.utils'
-import { Potw } from '../../shared/src/badge2'
-import { F } from '../../shared/src/server-types'
-import isDemo from '../../shared/src/platform/isDemo'
+import { Potw } from '@paas/shared/lib/badge2'
+import { F } from '@paas/shared/lib/server-types'
+import isDemo from '@paas/shared/lib/platform/isDemo'
 
 const db = salamander(admin.firestore())
 

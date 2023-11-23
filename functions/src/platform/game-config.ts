@@ -1,6 +1,6 @@
-import { SHINY_CHARM } from '../../../shared/src/quests';
-import { ItemId } from '../../../shared/src/items-list';
-import { weeklyId } from '../../../shared/src/platform/weekly';
+import { SHINY_CHARM } from '@paas/shared/lib/quests';
+import { ItemId } from '@paas/shared/lib/items-list';
+import { weeklyId } from '@paas/shared/lib/platform/weekly';
 
 export const GROUP_BADGE_ID = weeklyId
 

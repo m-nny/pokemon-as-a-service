@@ -1,7 +1,7 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import * as Utils from './utils' 
-import * as Pkmn from './../../shared/src/pokemon'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 import { Users } from './db-types';
 
 const db = admin.firestore()

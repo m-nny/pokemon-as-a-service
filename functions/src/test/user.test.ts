@@ -1,9 +1,9 @@
 import test from 'ava'
-import { Badge, MATCH_GTS, Pokemon } from '../../../shared/src/badge3'
-import { PokemonId } from '../../../shared/src/pokemon/types'
+import { Badge, MATCH_GTS, Pokemon } from '.@paas/shared/lib/badge3'
+import { PokemonId } from '.@paas/shared/lib/pokemon/types'
 import { Users } from '../db-types'
 import { addPokemon, calculateNetWorth, hasPokemon, hasPokemonFuzzy, removePokemon } from '../users.utils'
-import * as P from '../../../shared/src/gen/type-pokemon-ids'
+import * as P from '.@paas/shared/lib/gen/type-pokemon-ids'
 
 const user: Users.Doc = {
   eggs: [],

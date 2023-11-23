@@ -1,16 +1,16 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { Users } from './db-types'
-import {Berry, ITEMS, ItemId, BerryId, FertilizerId } from '../../shared/src/items-list'
+import {Berry, ITEMS, ItemId, BerryId, FertilizerId } from '@paas/shared/lib/items-list'
 import { addPokemon, awardItem, hasItem } from './users.utils'
-import { Badge } from '../../shared/src/badge3'
+import { Badge } from '@paas/shared/lib/badge3'
 import { randomItem } from './utils'
-import {getTotalPlots, parsePlot, getNextPlotCost, isBerryHarvestable, isEmptyPlot, getYield, encounterRate, fertilizerMutation, getFertilizerPokemon} from '../../shared/src/farming'
+import {getTotalPlots, parsePlot, getNextPlotCost, isBerryHarvestable, isEmptyPlot, getYield, encounterRate, fertilizerMutation, getFertilizerPokemon} from '@paas/shared/lib/farming'
 import { salamander } from '@fleker/salamander'
 import { shinyRate } from './platform/game-config'
-import { F, BerryPlot } from '../../shared/src/server-types'
+import { F, BerryPlot } from '@paas/shared/lib/server-types'
 import { accomodateResearch } from './research-quests'
-import { FOSSILS } from '../../shared/src/prizes'
+import { FOSSILS } from '@paas/shared/lib/prizes'
 
 const db = salamander(admin.firestore())
 const FieldValue = admin.firestore.FieldValue;
@@ -181,7 +181,7 @@ export const berry_plant = functions.https.onCall(async (data: F.BerryPlant.Req,
     for (let i = 0; i < dataBerry.length; i++) {
       const db = dataBerry[i]
       const di = dataIndex[i]
-      if (data.index < 0) {
+      if ((data.index as number) < 0) {
         throw new functions.https.HttpsError('failed-precondition',
           `Cannot write to plot ${di}`)
       }

@@ -1,14 +1,14 @@
-import { Badge } from "../../shared/src/badge3"
+import { Badge } from "@paas/shared/lib/badge3"
 import { DbRaid, Users } from './db-types'
-import { isQuestComplete } from "../../shared/src/quests"
-import { ItemId, ITEMS } from "../../shared/src/items-list"
+import { isQuestComplete } from "@paas/shared/lib/quests"
+import { ItemId, ITEMS } from "@paas/shared/lib/items-list"
 import { calculateNetWorth, hasItem, hasPokemonFuzzy } from "./users.utils"
-import { standardBosses } from "../../shared/src/raid-bosses"
+import { standardBosses } from "@paas/shared/lib/raid-bosses"
 import { getLocation } from "./location"
 import { toRequirements } from "./users"
-import { PokemonId } from "../../shared/src/pokemon/types"
-import { raidBattleSettings as sharedSettings, SharedRaidSetting } from "../../shared/src/raid-settings"
-import { get } from "../../shared/src/pokemon"
+import { PokemonId } from "@paas/shared/lib/pokemon/types"
+import { raidBattleSettings as sharedSettings, SharedRaidSetting } from "@paas/shared/lib/raid-settings"
+import { get } from "@paas/shared/lib/pokemon"
 
 // STATES
 export const CREATED = 0

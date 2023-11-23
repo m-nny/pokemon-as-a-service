@@ -1,4 +1,4 @@
-import { ItemId } from "./../../shared/src/items-list"
+import { ItemId } from "@paas/shared/lib/items-list"
 
 export function getMaxItemsToBuy(playerItems: Partial<Record<ItemId, number>>, item: ItemId, toBuy: number, maxItems?: number): number {
   if (!maxItems) {

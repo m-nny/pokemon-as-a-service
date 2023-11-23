@@ -1,15 +1,15 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { LEGENDARY_ITEM_QUESTS } from './../../shared/src/quests'
+import { LEGENDARY_ITEM_QUESTS } from '@paas/shared/lib/quests'
 import { HiddenItemDoc, Users } from './db-types';
 import { FieldValue } from '@google-cloud/firestore';
 import { calculateNetWorth } from './users.utils'
 import {salamander, SalamanderRef} from '@fleker/salamander'
 import { RuntimeOptions } from 'firebase-functions';
 import { optionallyRecycle } from './recycler';
-import { getAllPokemon } from '../../shared/src/badge-inflate';
+import { getAllPokemon } from '@paas/shared/lib/badge-inflate';
 import { sendNotification } from './notifications';
-import { isBerryHarvestable, parsePlot } from '../../shared/src/farming';
+import { isBerryHarvestable, parsePlot } from '@paas/shared/lib/farming';
 import { aboutInfo } from './vendor/example-tasks'
 
 const db = salamander(admin.firestore())

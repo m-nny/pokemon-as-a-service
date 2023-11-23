@@ -1,10 +1,10 @@
 import test from 'ava'
 import { optionallyRecycle } from '../recycler'
-import { Potw } from '../../../shared/src/badge2'
-import { AZELF, SHAYMIN, UXIE } from '../../../shared/src/legendary-quests'
-import { BadgeId } from '../../../shared/src/pokemon/types'
-import * as P from '../../../shared/src/gen/type-pokemon'
-import { ItemId } from '../../../shared/src/items-list'
+import { Potw } from '.@paas/shared/lib/badge2'
+import { AZELF, SHAYMIN, UXIE } from '.@paas/shared/lib/legendary-quests'
+import { BadgeId } from '.@paas/shared/lib/pokemon/types'
+import * as P from '.@paas/shared/lib/gen/type-pokemon'
+import { ItemId } from '.@paas/shared/lib/items-list'
 
 const items: Partial<Record<ItemId, number>> = {
   pokeball: 1,

@@ -1,4 +1,4 @@
-import { season, Location, Globe, WeatherType } from '../../../shared/src/locations-list';
+import { season, Location, Globe, WeatherType } from '.@paas/shared/lib/locations-list';
 import test from "ava";
 import spacetime from 'spacetime'
 import { timeOfDay, isDusk } from '../location.utils';

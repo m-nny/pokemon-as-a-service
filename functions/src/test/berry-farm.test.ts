@@ -1,9 +1,9 @@
 import test from 'ava'
 import { Users } from '../db-types'
-import * as F from '../../../shared/src/farming'
-import {BerryPlot} from '../../../shared/src/server-types'
-import { Berry, ITEMS, FertilizerId } from '../../../shared/src/items-list'
-import * as Pkmn from '../../../shared/src/pokemon'
+import * as F from '.@paas/shared/lib/farming'
+import {BerryPlot} from '.@paas/shared/lib/server-types'
+import { Berry, ITEMS, FertilizerId } from '.@paas/shared/lib/items-list'
+import * as Pkmn from '.@paas/shared/lib/pokemon'
 
 test('Checking plots', t => {
   const user = {

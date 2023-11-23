@@ -3,10 +3,10 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 import test from 'ava'
-import { TeamsBadge, Potw } from './../../../shared/src/badge2';
+import { TeamsBadge, Potw } from './.@paas/shared/lib/badge2';
 import { compatibleEggGroup, getEggMoveVariation, daycareItems, generateEgg, canBeShiny } from '../day-care.utils'
-import * as P from './../../../shared/src/gen/type-pokemon'
-import { babyProduced } from './../../../shared/src/platform/breeding-club';
+import * as P from './.@paas/shared/lib/gen/type-pokemon'
+import { babyProduced } from './.@paas/shared/lib/platform/breeding-club';
 
 test('Test one mother and one father egg group', t => {
   const result = compatibleEggGroup('Monster', 'Monster')

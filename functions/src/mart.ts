@@ -1,12 +1,12 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { ITEMS, BAZAAR, BAZAAR_CLOSED, BAZAAR_SOLDOUT, ItemId } from '../../shared/src/items-list'
+import { ITEMS, BAZAAR, BAZAAR_CLOSED, BAZAAR_SOLDOUT, ItemId } from '@paas/shared/lib/items-list'
 import { getMaxItemsToBuy } from './mart.utils'
 import { salamander } from '@fleker/salamander'
 import { Users } from './db-types'
-import {F} from '../../shared/src/server-types'
+import {F} from '@paas/shared/lib/server-types'
 import { toRequirements } from './users'
-import { Globe } from '../../shared/src/locations-list'
+import { Globe } from '@paas/shared/lib/locations-list'
 
 const db = salamander(admin.firestore())
 

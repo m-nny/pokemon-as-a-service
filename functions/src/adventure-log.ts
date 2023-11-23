@@ -1,8 +1,8 @@
 import * as admin from 'firebase-admin'
 
 import { GtsEntry } from "./gts"
-import { TeamsBadge } from '../../shared/src/badge2'
-import { BadgeId } from '../../shared/src/pokemon/types';
+import { TeamsBadge } from '@paas/shared/lib/badge2'
+import { BadgeId } from '@paas/shared/lib/pokemon/types';
 
 const db = admin.firestore()
 const FieldValue = admin.firestore.FieldValue

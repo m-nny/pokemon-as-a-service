@@ -1,17 +1,17 @@
-import { TeamsBadge, MATCH_REQS } from "../../shared/src/badge2"
-import { EggGroup, Type } from "../../shared/src/pokemon/types"
+import { TeamsBadge, MATCH_REQS } from "@paas/shared/lib/badge2"
+import { EggGroup, Type } from "@paas/shared/lib/pokemon/types"
 import { randomItem } from "./utils"
-import * as Club from '../../shared/src/platform/breeding-club';
-import * as Pkmn from '../../shared/src/pokemon'
-import * as P from '../../shared/src/gen/type-pokemon'
-import { MoveId } from "../../shared/src/gen/type-move-meta";
-import { ItemId } from "../../shared/src/items-list";
-import { BadgeId } from '../../shared/src/pokemon/types';
-import { Badge } from "../../shared/src/badge3";
-import { Location } from "../../shared/src/locations-list";
-import { useItem, UseItemOutput } from "../../shared/src/items-availablity";
+import * as Club from '@paas/shared/lib/platform/breeding-club';
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
+import { MoveId } from "@paas/shared/lib/gen/type-move-meta";
+import { ItemId } from "@paas/shared/lib/items-list";
+import { BadgeId } from '@paas/shared/lib/pokemon/types';
+import { Badge } from "@paas/shared/lib/badge3";
+import { Location } from "@paas/shared/lib/locations-list";
+import { useItem, UseItemOutput } from "@paas/shared/lib/items-availablity";
 import spacetime from "spacetime";
-import { Users } from "../../shared/src/server-types";
+import { Users } from "@paas/shared/lib/server-types";
 
 export type BreedState = 'MOTHER-LIKE' | 'FATHER-LIKE' | 'INVALID'
 

@@ -1,18 +1,18 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { MATCH_GTS } from '../../shared/src/badge2'
+import { MATCH_GTS } from '@paas/shared/lib/badge2'
 import { Users } from './db-types';
 import { randomItem } from './utils';
-import * as Pkmn from '../../shared/src/pokemon'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 import { tradeEvolutionsMap, ItemBasedFunction, trainerVerify, swap } from './gts.utils';
-import { ITEMS, ItemId } from '../../shared/src/items-list';
-import { BadgeId, pokemonForms, PokemonId } from '../../shared/src/pokemon/types';
-import * as P from '../../shared/src/gen/type-pokemon'
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list';
+import { BadgeId, pokemonForms, PokemonId } from '@paas/shared/lib/pokemon/types';
+import * as P from '@paas/shared/lib/gen/type-pokemon'
 import { addPokemon, hasItem, hasPokemon } from './users.utils';
 import * as A from './adventure-log'
-import {Badge} from '../../shared/src/badge3'
+import {Badge} from '@paas/shared/lib/badge3'
 import { sendNotification } from './notifications';
-import { pkmn } from '../../shared/src/sprites';
+import { pkmn } from '@paas/shared/lib/sprites';
 
 const db = admin.firestore()
 const FieldValue = admin.firestore.FieldValue;

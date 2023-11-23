@@ -4,15 +4,15 @@ import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { GtsEntry } from './gts'
 import { DbTradeRoom, Users } from './db-types';
-import * as Pkmn from '../../shared/src/pokemon'
-import { ITEMS } from '../../shared/src/items-list';
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import { ITEMS } from '@paas/shared/lib/items-list';
 import { hasItem, hasPokemon } from './users.utils';
 import { swapNoCheck } from './gts.utils';
 import * as A from './adventure-log'
 import { salamander } from '@fleker/salamander';
-import {Badge} from '../../shared/src/badge3'
-import {F} from '../../shared/src/server-types'
-import { updateFriendSafari } from '../../shared/src/friend-safari';
+import {Badge} from '@paas/shared/lib/badge3'
+import {F} from '@paas/shared/lib/server-types'
+import { updateFriendSafari } from '@paas/shared/lib/friend-safari';
 
 const db = salamander(admin.firestore())
 const FieldValue = admin.firestore.FieldValue;

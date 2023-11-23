@@ -1,27 +1,27 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { Badge, Nature } from '../../shared/src/badge3';
-import {DirectMap, getVariantForMove, ItemUsageParams, useItem} from '../../shared/src/items-availablity'
-import * as Pkmn from '../../shared/src/pokemon'
+import { Badge, Nature } from '@paas/shared/lib/badge3';
+import {DirectMap, getVariantForMove, ItemUsageParams, useItem} from '@paas/shared/lib/items-availablity'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 import { DbRaid, Users } from './db-types';
 import { salamander, SalamanderRef, SalamanderTxn } from '@fleker/salamander';
 import { addPokemon, awardItem, hasItem, hasPokemon, removePokemon } from './users.utils';
-import { ITEMS, ItemId } from '../../shared/src/items-list';
-import { MoveId } from '../../shared/src/gen/type-move-meta';
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list';
+import { MoveId } from '@paas/shared/lib/gen/type-move-meta';
 import { shinyRate } from './platform/game-config';
 import { accomodateResearch } from './research-quests';
 import spacetime from 'spacetime';
-import {F} from '../../shared/src/server-types'
-import * as P from '../../shared/src/gen/type-pokemon'
-import { Recipes } from '../../shared/src/crafting';
+import {F} from '@paas/shared/lib/server-types'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
+import { Recipes } from '@paas/shared/lib/crafting';
 import { toRequirements } from './users';
 import { getLocation } from './location';
-import { BadgeId, PokemonId } from '../../shared/src/pokemon/types';
+import { BadgeId, PokemonId } from '@paas/shared/lib/pokemon/types';
 import * as A from './adventure-log'
-import randomItem from '../../shared/src/random-item';
-import { SHINY_CHARM } from '../../shared/src/quests';
-import { Globe } from '../../shared/src/locations-list';
-import { randomVariant } from '../../shared/src/farming';
+import randomItem from '@paas/shared/lib/random-item';
+import { SHINY_CHARM } from '@paas/shared/lib/quests';
+import { Globe } from '@paas/shared/lib/locations-list';
+import { randomVariant } from '@paas/shared/lib/farming';
 
 const db = salamander(admin.firestore())
 const FieldValue = admin.firestore.FieldValue;
@@ -251,7 +251,7 @@ async function useItemTarget(data: F.UseItem.OnTarget, userId: string): Promise<
       console.log(res)
       if (res.consumedItem === true) {
         items[item]!-- // Remove item from your bag
-      } else if (res.consumedItem > 1) {
+      } else if (( res.consumedItem as number) > 1) {
         items[item]! -= (res.consumedItem as number)
       }
       removePokemon(user, targetBadge)

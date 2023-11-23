@@ -7,7 +7,7 @@ import { MoveId } from "./gen/type-move-meta"
 import { Movepool } from './battle/movepool'
 import { Pokemon } from "./battle/types"
 import randomItem from './random-item'
-import { TargetSelection, MoveSelection } from "../../shared/src/battle/natures"
+import { TargetSelection, MoveSelection } from "./battle/natures"
 import { ConditionMap } from "./battle/status"
 
 /**

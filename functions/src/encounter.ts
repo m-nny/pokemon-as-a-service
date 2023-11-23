@@ -1,30 +1,30 @@
 import { Users } from './db-types'
-import { TeamsBadge, MATCH_REQS, Potw } from '../../shared/src/badge2'
-import { season, Location, WeatherType, TerrainType, RegionType, TimeOfDay, timeOfDay, isDusk, Tides, LocationId, Globe, getTidesByLocation } from '../../shared/src/locations-list'
-import * as Pkmn from '../../shared/src/pokemon'
-import { BadgeId, PokemonDoc, PokemonForm, PokemonGender } from '../../shared/src/pokemon/types'
-import { CLEAR_BELL, CATCH_CHARM_RBY, CATCH_CHARM_GSC, CATCH_CHARM_RSE, CATCH_CHARM_DPPT, CATCH_CHARM_BW, CATCH_CHARM_SM } from '../../shared/src/quests'
-import { CATCH_CHARM_SWSH } from '../../shared/src/legendary-quests'
-import { LureId } from '../../shared/src/gen/type-item'
-import { Bait, ItemId, PokeballId } from '../../shared/src/items-list'
-import * as I from '../../shared/src/gen/type-pokemon-ids'
-import * as P from '../../shared/src/gen/type-pokemon'
-import {Events, EventId} from '../../shared/src/events'
-import * as S from '../../shared/src/server-types'
+import { TeamsBadge, MATCH_REQS, Potw } from '@paas/shared/lib/badge2'
+import { season, Location, WeatherType, TerrainType, RegionType, TimeOfDay, timeOfDay, isDusk, Tides, LocationId, Globe, getTidesByLocation } from '@paas/shared/lib/locations-list'
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import { BadgeId, PokemonDoc, PokemonForm, PokemonGender } from '@paas/shared/lib/pokemon/types'
+import { CLEAR_BELL, CATCH_CHARM_RBY, CATCH_CHARM_GSC, CATCH_CHARM_RSE, CATCH_CHARM_DPPT, CATCH_CHARM_BW, CATCH_CHARM_SM } from '@paas/shared/lib/quests'
+import { CATCH_CHARM_SWSH } from '@paas/shared/lib/legendary-quests'
+import { LureId } from '@paas/shared/lib/gen/type-item'
+import { Bait, ItemId, PokeballId } from '@paas/shared/lib/items-list'
+import * as I from '@paas/shared/lib/gen/type-pokemon-ids'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
+import {Events, EventId} from '@paas/shared/lib/events'
+import * as S from '@paas/shared/lib/server-types'
 import spacetime from 'spacetime'
-import { Swarms } from '../../shared/src/platform/swarms'
-import { SWARMS_UNLOCK } from '../../shared/src/quests'
+import { Swarms } from '@paas/shared/lib/platform/swarms'
+import { SWARMS_UNLOCK } from '@paas/shared/lib/quests'
 import { hasPokemonFuzzy } from './users.utils'
-import {getAllPokemon, TPokemon} from '../../shared/src/badge-inflate'
-import { Pokemon, Badge } from '../../shared/src/badge3'
-import { Azelf, Mesprit, Uxie } from '../../shared/src/gen/type-pokemon-ids'
-import { ITEMS } from '../../shared/src/items-list'
-import { FriendSafariMap } from '../../shared/src/friend-safari'
-import { randomVariant } from '../../shared/src/farming'
-import { get } from '../../shared/src/pokemon'
-import randomItem from '../../shared/src/random-item'
-import { CATCH_CHARM_XY } from '../../shared/src/legendary-quests'
-import { NECTARS } from '../../shared/src/prizes'
+import {getAllPokemon, TPokemon} from '@paas/shared/lib/badge-inflate'
+import { Pokemon, Badge } from '@paas/shared/lib/badge3'
+import { Azelf, Mesprit, Uxie } from '@paas/shared/lib/gen/type-pokemon-ids'
+import { ITEMS } from '@paas/shared/lib/items-list'
+import { FriendSafariMap } from '@paas/shared/lib/friend-safari'
+import { randomVariant } from '@paas/shared/lib/farming'
+import { get } from '@paas/shared/lib/pokemon'
+import randomItem from '@paas/shared/lib/random-item'
+import { CATCH_CHARM_XY } from '@paas/shared/lib/legendary-quests'
+import { NECTARS } from '@paas/shared/lib/prizes'
 
 function setGender(id: BadgeId, gender: PokemonGender) {
   const badge = new TeamsBadge(id);
@@ -4222,7 +4222,7 @@ export const HOLD_ITEMS_50: HoldItemTable = {
   [P.Mothim]: ['dazzlinghoney'],
   [P.Combee]: ['dazzlinghoney'],
   [P.Vespiquen]: ['dazzlinghoney'],
-  [P.Pachirisu]: ['oran'],
+  // [P.Pachirisu]: ['oran'],
   [P.Cherubi]: ['lum'],
   [P.Cherrim]: ['lum', 'kingsleaf'],
   [P.Shellos]: ['nanab', 'tmm_shellos'],

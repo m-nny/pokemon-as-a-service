@@ -1,26 +1,26 @@
-import { PokemonId} from '../../shared/src/pokemon/types'
-import { BATTLE_TIERS, canBeginnersCup } from '../../shared/src/battle-tiers'
+import { PokemonId} from '@paas/shared/lib/pokemon/types'
+import { BATTLE_TIERS, canBeginnersCup } from '@paas/shared/lib/battle-tiers'
 import { BattleStadium, Users } from './db-types'
-import { BadgeId } from '../../shared/src/pokemon/types';
+import { BadgeId } from '@paas/shared/lib/pokemon/types';
 import { STADIUM_REWARDS } from './platform/game-config'
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { randomItem } from './utils'
-import { TeamsBadge } from './../../shared/src/badge2';
-import * as Pkmn from './../../shared/src/pokemon'
+import { TeamsBadge } from '@paas/shared/lib/badge2';
+import * as Pkmn from '@paas/shared/lib/pokemon'
 import { getLocation } from './location'
 import { addPokemon, calculateNetWorth, hasItem, hasPokemonFuzzy, removePokemon } from './users.utils'
 import { salamander } from '@fleker/salamander'
 import { RuntimeOptions } from 'firebase-functions'
 import { forEveryUser } from './admin'
-import { ITEMS, ItemId } from '../../shared/src/items-list'
-import { Badge } from '../../shared/src/badge3'
-import { F } from '../../shared/src/server-types'
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list'
+import { Badge } from '@paas/shared/lib/badge3'
+import { F } from '@paas/shared/lib/server-types'
 import { raidBattleSettings } from './battle-raid.utils'
 import { sendNotification } from './notifications'
-import { item } from '../../shared/src/sprites'
-import { matchup, ExecuteLog, RESULT_PLAYER_VICTORY } from '../../shared/src/battle/battle-controller'
-import * as PI from '../../shared/src/gen/type-pokemon-ids'
+import { item } from '@paas/shared/lib/sprites'
+import { matchup, ExecuteLog, RESULT_PLAYER_VICTORY } from '@paas/shared/lib/battle/battle-controller'
+import * as PI from '@paas/shared/lib/gen/type-pokemon-ids'
 
 
 // const db = salamander(admin.firestore())hj

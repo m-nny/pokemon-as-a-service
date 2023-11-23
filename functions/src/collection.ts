@@ -1,34 +1,34 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { Badge, DEFAULT_TAGS, Tag } from '../../shared/src/badge3';
+import { Badge, DEFAULT_TAGS, Tag } from '@paas/shared/lib/badge3';
 import * as Utils from './utils';
-import * as Sprite from '../../shared/src/sprites';
+import * as Sprite from '@paas/shared/lib/sprites';
 import { ENCOUNTERS, HOLD_ITEMS_5, HOLD_ITEMS_15, deduplicate, HOLD_ITEMS_50 } from './encounter'
 import { ReleasedDoc, Swarm, Users } from './db-types';
 import { gameConfigLoad } from './dowsing-badge';
-import * as Pkmn from '../../shared/src/pokemon'
-import { BadgeId, PokemonId } from '../../shared/src/pokemon/types';
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import { BadgeId, PokemonId } from '@paas/shared/lib/pokemon/types';
 import { accomodateResearch } from './research-quests';
-import { LureArr, LureId } from '../../shared/src/gen/type-item';
+import { LureArr, LureId } from '@paas/shared/lib/gen/type-item';
 import { getLocation } from './location';
-import { ITEMS, ItemId } from '../../shared/src/items-list';
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list';
 import { addPokemon, awardItem, calculateNetWorth, hasItem, hasPokemon, removePokemon } from './users.utils';
-import { Globe } from '../../shared/src/locations-list';
-import { POKEDOLL } from '../../shared/src/quests';
+import { Globe } from '@paas/shared/lib/locations-list';
+import { POKEDOLL } from '@paas/shared/lib/quests';
 import { salamander } from '@fleker/salamander';
-import { Swarms } from '../../shared/src/platform/swarms';
-import { randomVariant } from '../../shared/src/farming';
+import { Swarms } from '@paas/shared/lib/platform/swarms';
+import { randomVariant } from '@paas/shared/lib/farming';
 import { shinyRate } from './platform/game-config';
 import { genReleaseItems, v2Release } from './collection.utils';
-import { Events } from '../../shared/src/events';
-import { Souvenirs } from '../../shared/src/souvenirs';
-import randomItem from '../../shared/src/random-item';
-import * as S from '../../shared/src/server-types';
-import {F} from '../../shared/src/server-types';
-import {PokeballId} from '../../shared/src/items-list';
+import { Events } from '@paas/shared/lib/events';
+import { Souvenirs } from '@paas/shared/lib/souvenirs';
+import randomItem from '@paas/shared/lib/random-item';
+import * as S from '@paas/shared/lib/server-types';
+import {F} from '@paas/shared/lib/server-types';
+import {PokeballId} from '@paas/shared/lib/items-list';
 import * as A from './adventure-log'
 import { sendNotification } from './notifications';
-import isDemo from '../../shared/src/platform/isDemo'
+import isDemo from '@paas/shared/lib/platform/isDemo'
 
 const db = salamander(admin.firestore())
 const FieldValue = admin.firestore.FieldValue;

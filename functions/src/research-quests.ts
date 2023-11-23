@@ -1,14 +1,14 @@
 import { Users } from "./db-types";
-import { BadgeId } from '../../shared/src/pokemon/types'
-import {ResearchParams, ACTIVE_RESEARCH} from '../../shared/src/research'
+import { BadgeId } from '@paas/shared/lib/pokemon/types'
+import {ResearchParams, ACTIVE_RESEARCH} from '@paas/shared/lib/research'
 
 import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
 import { randomItem } from "./utils";
-import { ItemId } from '../../shared/src/items-list';
+import { ItemId } from '@paas/shared/lib/items-list';
 import { salamander } from "@fleker/salamander";
 import { getLocation } from "./location";
-import { F } from "../../shared/src/server-types";
+import { F } from "@paas/shared/lib/server-types";
 // Shim until Node v12: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
 const fromEntries = require('object.fromentries');
 import { awardItem } from "./users.utils";

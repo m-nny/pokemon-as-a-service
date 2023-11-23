@@ -1,4 +1,4 @@
-import * as Pkmn from '../../shared/src/pokemon'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 
 export const getPokemonDetails = (key: string) => {
   const pkmn = Pkmn.get(key)

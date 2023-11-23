@@ -1,12 +1,12 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { randomItem } from './utils'
-import { Location, WeatherType, Globe, season } from '../../shared/src/locations-list'
-import { babyProduced, parents } from '../../shared/src/platform/breeding-club'
-import { GLOBAL_QUEST_DATE } from '../../shared/src/quests'
-import { Swarms } from '../../shared/src/platform/swarms'
-import { get } from '../../shared/src/pokemon'
-import { PokemonForm } from '../../shared/src/pokemon/types'
+import { Location, WeatherType, Globe, season } from '@paas/shared/lib/locations-list'
+import { babyProduced, parents } from '@paas/shared/lib/platform/breeding-club'
+import { GLOBAL_QUEST_DATE } from '@paas/shared/lib/quests'
+import { Swarms } from '@paas/shared/lib/platform/swarms'
+import { get } from '@paas/shared/lib/pokemon'
+import { PokemonForm } from '@paas/shared/lib/pokemon/types'
 
 // Initialize Firebase -- DO NOT DO IN PROD
 /*

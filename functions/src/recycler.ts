@@ -1,7 +1,7 @@
-import { TeamsBadge, MATCH_REQS } from '../../shared/src/badge2'
-import { ItemId } from '../../shared/src/items-list'
-import { BadgeId } from '../../shared/src/pokemon/types'
-import { KEY_ITEM_QUESTS, LEGENDARY_ITEM_QUESTS } from '../../shared/src/quests'
+import { TeamsBadge, MATCH_REQS } from '@paas/shared/lib/badge2'
+import { ItemId } from '@paas/shared/lib/items-list'
+import { BadgeId } from '@paas/shared/lib/pokemon/types'
+import { KEY_ITEM_QUESTS, LEGENDARY_ITEM_QUESTS } from '@paas/shared/lib/quests'
 
 const legendarySpeciesKeyMap: {[key in BadgeId]?: string} = {}
 for (const q of LEGENDARY_ITEM_QUESTS) {

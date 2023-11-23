@@ -1,22 +1,22 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import { Badge, Pokemon } from '../../shared/src/badge3';
+import { Badge, Pokemon } from '@paas/shared/lib/badge3';
 import { ItemEntry } from './items';
-import * as Pkmn from '../../shared/src/pokemon'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 import { randomItem } from './utils';
-import { ItemId } from '../../shared/src/items-list';
-import * as ST from '../../shared/src/server-types';
+import { ItemId } from '@paas/shared/lib/items-list';
+import * as ST from '@paas/shared/lib/server-types';
 import {Users} from './db-types';
 import * as DB from './db-types';
 import { addPokemon, hasItem, hasPokemon, removePokemon } from './users.utils';
 import { canBeShiny, generateEgg, mantykeMethod, panchamMethod, compatibleEggGroup, DayCareEvolution, daycareEvolution } from './day-care.utils';
-import {babyProduced} from '../../shared/src/platform/breeding-club'
-import { BadgeId, PokemonId } from '../../shared/src/pokemon/types';
-import { OVALCHARM } from '../../shared/src/quests';
+import {babyProduced} from '@paas/shared/lib/platform/breeding-club'
+import { BadgeId, PokemonId } from '@paas/shared/lib/pokemon/types';
+import { OVALCHARM } from '@paas/shared/lib/quests';
 import { shinyRate } from './platform/game-config';
-import { Ditto } from '../../shared/src/gen/type-pokemon-ids';
-import { F } from '../../shared/src/server-types';
-import * as I from '../../shared/src/gen/type-pokemon-ids';
+import { Ditto } from '@paas/shared/lib/gen/type-pokemon-ids';
+import { F } from '@paas/shared/lib/server-types';
+import * as I from '@paas/shared/lib/gen/type-pokemon-ids';
 import { getLocation } from './location';
 
 const db = admin.firestore()

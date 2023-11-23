@@ -1,14 +1,14 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import * as Sprite from '../../shared/src/sprites'
-import { ITEMS, ItemId } from '../../shared/src/items-list'
+import * as Sprite from '@paas/shared/lib/sprites'
+import { ITEMS, ItemId } from '@paas/shared/lib/items-list'
 
 import { radioQuizHiddenIds, gameConfigLoad} from './dowsing-badge'
-import {CLEAR_BELL} from '../../shared/src/quests'
-import { F } from '../../shared/src/server-types';
+import {CLEAR_BELL} from '@paas/shared/lib/quests'
+import { F } from '@paas/shared/lib/server-types';
 import { Lottery, RadioQuiz, Users } from './db-types';
 import { awardItem } from './users.utils';
-import * as RQ from '../../shared/src/radio-quiz'
+import * as RQ from '@paas/shared/lib/radio-quiz'
 import { salamander } from '@fleker/salamander'
 
 const db = salamander(admin.firestore())

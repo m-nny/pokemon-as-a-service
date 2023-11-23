@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin'
-import * as P from './../../shared/src/gen/type-pokemon'
+import * as P from '@paas/shared/lib/gen/type-pokemon'
 const db = admin.firestore();
 
 let _sudowoodoArray: string[] = []

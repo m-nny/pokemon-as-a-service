@@ -1,12 +1,12 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import { salamander } from '@fleker/salamander'
-import { BadgeId, PokemonId } from '../../shared/src/pokemon/types';
-import * as B2 from '../../shared/src/badge2'
-import * as B3 from '../../shared/src/badge3'
+import { BadgeId, PokemonId } from '@paas/shared/lib/pokemon/types';
+import * as B2 from '@paas/shared/lib/badge2'
+import * as B3 from '@paas/shared/lib/badge3'
 import { Users } from './db-types';
 import { addPokemon, hasPokemon, removePokemon } from './users.utils';
-import { get } from '../../shared/src/pokemon';
+import { get } from '@paas/shared/lib/pokemon';
 import * as A from './adventure-log'
 
 const db = salamander(admin.firestore())

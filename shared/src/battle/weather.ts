@@ -1,6 +1,6 @@
 import { Pokemon, Log, logDamage, Move, Field } from "./types";
-import { Type } from "../../../shared/src/pokemon/types";
-import { WeatherType } from "../../../shared/src/locations-list";
+import { Type } from "../pokemon/types";
+import { WeatherType } from "../locations-list";
 import { Terrains } from "./terrain";
 import { getCondition } from "./conditions";
 

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
-import { PokemonId, Type } from "../../shared/src/pokemon/types"
-import { ItemId } from "../../shared/src/items-list"
-import { WeatherType, LocationId } from "../../shared/src/locations-list"
-import { BadgeId } from '../../shared/src/pokemon/types';
-import { Tier } from "../../shared/src/battle-tiers"
-import { Notification } from "../../shared/src/server-types";
-import * as Server from "../../shared/src/server-types";
+import { PokemonId, Type } from "@paas/shared/lib/pokemon/types"
+import { ItemId } from "@paas/shared/lib/items-list"
+import { WeatherType, LocationId } from "@paas/shared/lib/locations-list"
+import { BadgeId } from '@paas/shared/lib/pokemon/types';
+import { Tier } from "@paas/shared/lib/battle-tiers"
+import { Notification } from "@paas/shared/lib/server-types";
+import * as Server from "@paas/shared/lib/server-types";
 import {FieldValue} from '@google-cloud/firestore'
 
 export function updateableUser(user: Users.Doc) {

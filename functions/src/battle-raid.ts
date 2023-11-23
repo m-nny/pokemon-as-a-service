@@ -4,42 +4,42 @@ import spacetime from 'spacetime'
 import {salamander} from '@fleker/salamander'
 
 import { randomItem } from './utils'
-import {BadgeId, PokemonDoc, PokemonId} from '../../shared/src/pokemon/types'
-import * as Pkmn from '../../shared/src/pokemon'
-import {Badge} from '../../shared/src/badge3'
+import {BadgeId, PokemonDoc, PokemonId} from '@paas/shared/lib/pokemon/types'
+import * as Pkmn from '@paas/shared/lib/pokemon'
+import {Badge} from '@paas/shared/lib/badge3'
 import { DbRaid, Users } from './db-types';
-import { Location } from '../../shared/src/locations-list'
+import { Location } from '@paas/shared/lib/locations-list'
 import {
   SHINY_CHARM, POKEDOLL, GLOBAL_QUEST_DATE,
-} from '../../shared/src/quests';
+} from '@paas/shared/lib/quests';
 import { isAdmin } from './platform/game-config'
-import { Movepool } from './../../shared/src/battle/movepool';
-import { Inventory } from './../../shared/src/battle/inventory';
-import {Pokemon} from './../../shared/src/battle/types'
-import { ConditionMap } from './../../shared/src/battle/status';
-import { targetSelection, moveSelection, statAdjustment } from './../../shared/src/battle/natures'
+import { Movepool } from '@paas/shared/lib/battle/movepool';
+import { Inventory } from '@paas/shared/lib/battle/inventory';
+import {Pokemon} from '@paas/shared/lib/battle/types'
+import { ConditionMap } from '@paas/shared/lib/battle/status';
+import { targetSelection, moveSelection, statAdjustment } from '@paas/shared/lib/battle/natures'
 import { RuntimeOptions } from 'firebase-functions';
 import { CREATED, COMPLETED, IN_PROGRESS, EXPIRED, violatesRoomSize, raidBattleSettings, getPityCount, raidSelectPreconditionCheck } from './battle-raid.utils';
 import { getLocation } from './location';
-import { RaidBoss, bossPrizes, BOOSTED_SHINY, getAvailableBosses, bossHeldItem } from '../../shared/src/raid-bosses';
+import { RaidBoss, bossPrizes, BOOSTED_SHINY, getAvailableBosses, bossHeldItem } from '@paas/shared/lib/raid-bosses';
 import { hasItem, awardItem, calculateNetWorth, addPokemon } from './users.utils';
-import { ItemId } from '../../shared/src/items-list';
+import { ItemId } from '@paas/shared/lib/items-list';
 import { timeOfDay } from './location.utils';
 
 import * as A from './adventure-log'
-import { Requirements } from '../../shared/src/legendary-quests';
+import { Requirements } from '@paas/shared/lib/legendary-quests';
 import { forEveryUser } from './admin';
-import { getAllPokemon } from '../../shared/src/badge-inflate'
+import { getAllPokemon } from '@paas/shared/lib/badge-inflate'
 import { toRequirements } from './users'
 import { accomodateResearch } from './research-quests'
 import { sendNotification } from './notifications'
-import { ITEMS } from '../../shared/src/items-list'
-import { item, pkmn } from '../../shared/src/sprites'
-import { EXPIRY_TIME } from '../../shared/src/raid-settings'
-import { Notification, PublicRaidsDoc } from '../../shared/src/server-types'
-import { typePrizes } from '../../shared/src/raid-prizes'
-import {BattleOptions, execute, ExecuteLog} from '../../shared/src/battle/battle-controller'
-import isDemo from '../../shared/src/platform/isDemo'
+import { ITEMS } from '@paas/shared/lib/items-list'
+import { item, pkmn } from '@paas/shared/lib/sprites'
+import { EXPIRY_TIME } from '@paas/shared/lib/raid-settings'
+import { Notification, PublicRaidsDoc } from '@paas/shared/lib/server-types'
+import { typePrizes } from '@paas/shared/lib/raid-prizes'
+import {BattleOptions, execute, ExecuteLog} from '@paas/shared/lib/battle/battle-controller'
+import isDemo from '@paas/shared/lib/platform/isDemo'
 
 const _db = admin.firestore()
 const db = salamander(_db)

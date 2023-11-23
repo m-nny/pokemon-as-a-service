@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin'
-import * as S from '../../shared/src/server-types'
+import * as S from '@paas/shared/lib/server-types'
 import { Users } from './db-types'
 
 export interface Notification {

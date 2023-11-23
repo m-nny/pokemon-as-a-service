@@ -1,17 +1,17 @@
 import test from 'ava'
-import {criticalHit, SpeedAlignedAction, byPriority, bySpeed, getCasterTurnMove, BattleOptions, attack, turn, execute} from '../../../shared/src/battle/battle-controller'
-import {typeMultiplier} from '../../../shared/src/battle/typeMultiplier'
-import { Movepool, BUFF_STAT } from '../../../shared/src/battle/movepool';
-import { Inventory } from '../../../shared/src/battle/inventory';
-import { AbilityDex } from '../../../shared/src/battle/ability';
-import { Pokemon, Field, MoveInput, Log } from '../../../shared/src/battle/types'
-import { getCondition, removeCondition } from '../../../shared/src/battle/conditions';
-import { Weathers } from '../../../shared/src/battle/weather';
-import { ConditionMap } from '../../../shared/src/battle/status';
-import { Badge } from '../../../shared/src/badge3';
-import { Globe } from '../../../shared/src/locations-list';
-import { Rules } from '../../../shared/src/battle-tiers';
-import { maxMovePower } from '../../../shared/src/dynamax';
+import {criticalHit, SpeedAlignedAction, byPriority, bySpeed, getCasterTurnMove, BattleOptions, attack, turn, execute} from '.@paas/shared/lib/battle/battle-controller'
+import {typeMultiplier} from '.@paas/shared/lib/battle/typeMultiplier'
+import { Movepool, BUFF_STAT } from '.@paas/shared/lib/battle/movepool';
+import { Inventory } from '.@paas/shared/lib/battle/inventory';
+import { AbilityDex } from '.@paas/shared/lib/battle/ability';
+import { Pokemon, Field, MoveInput, Log } from '.@paas/shared/lib/battle/types'
+import { getCondition, removeCondition } from '.@paas/shared/lib/battle/conditions';
+import { Weathers } from '.@paas/shared/lib/battle/weather';
+import { ConditionMap } from '.@paas/shared/lib/battle/status';
+import { Badge } from '.@paas/shared/lib/badge3';
+import { Globe } from '.@paas/shared/lib/locations-list';
+import { Rules } from '.@paas/shared/lib/battle-tiers';
+import { maxMovePower } from '.@paas/shared/lib/dynamax';
 
 // const moveSelection = Natures.moveSelection.Hardy
 

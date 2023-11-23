@@ -1,9 +1,9 @@
-import { Badge } from "../../shared/src/badge3";
-import { PokemonId } from "../../shared/src/pokemon/types";
-import { ItemId } from "../../shared/src/items-list";
+import { Badge } from "@paas/shared/lib/badge3";
+import { PokemonId } from "@paas/shared/lib/pokemon/types";
+import { ItemId } from "@paas/shared/lib/items-list";
 import { Users } from "./db-types";
 import { awardItem, hasPokemonFuzzy, removePokemon } from "./users.utils";
-import * as Pkmn from '../../shared/src/pokemon'
+import * as Pkmn from '@paas/shared/lib/pokemon'
 
 export function genReleaseItems(user: Users.Doc, pokemon: PokemonId[]): ItemId[] {
   const receivedItems: ItemId[] = []

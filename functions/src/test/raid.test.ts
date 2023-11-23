@@ -1,7 +1,7 @@
 import test from 'ava'
-import { Pokemon, Badge } from '../../../shared/src/badge3';
-import { BadgeId } from '../../../shared/src/pokemon/types';
-import { Bulbasaur } from '../../../shared/src/gen/type-pokemon-ids';
+import { Pokemon, Badge } from '.@paas/shared/lib/badge3';
+import { BadgeId } from '.@paas/shared/lib/pokemon/types';
+import { Bulbasaur } from '.@paas/shared/lib/gen/type-pokemon-ids';
 import {violatesSpeciesClause, violatesRoomSize, raidSelectPreconditionCheck, CREATED} from '../battle-raid.utils'
 import { DbRaid, Users } from '../db-types'
 

@@ -1,5 +1,5 @@
-import { BadgeId } from "../../shared/src/pokemon/types";
-import { ItemId } from "../../shared/src/items-list";
+import { BadgeId } from "@paas/shared/lib/pokemon/types";
+import { ItemId } from "@paas/shared/lib/items-list";
 
 export const oneWeekAgo = new Date(Date.now() - 1000 * 60 * 60 * 24 * 7).getTime()
 
