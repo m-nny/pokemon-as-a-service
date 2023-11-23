@@ -4,7 +4,7 @@ import spacetime from 'spacetime'
 import {salamander} from '@fleker/salamander'
 
 import { randomItem } from './utils'
-import {BadgeId, PokemonDoc, PokemonId} from '@paas/shared/lib/pokemon/types'
+import {BadgeId, PokemonId} from '@paas/shared/lib/pokemon/types'
 import * as Pkmn from '@paas/shared/lib/pokemon'
 import {Badge} from '@paas/shared/lib/badge3'
 import { DbRaid, Users } from './db-types';
@@ -13,15 +13,11 @@ import {
   SHINY_CHARM, POKEDOLL, GLOBAL_QUEST_DATE,
 } from '@paas/shared/lib/quests';
 import { isAdmin } from './platform/game-config'
-import { Movepool } from '@paas/shared/lib/battle/movepool';
-import { Inventory } from '@paas/shared/lib/battle/inventory';
-import {Pokemon} from '@paas/shared/lib/battle/types'
-import { ConditionMap } from '@paas/shared/lib/battle/status';
-import { targetSelection, moveSelection, statAdjustment } from '@paas/shared/lib/battle/natures'
 import { RuntimeOptions } from 'firebase-functions';
-import { CREATED, COMPLETED, IN_PROGRESS, EXPIRED, violatesRoomSize, raidBattleSettings, getPityCount, raidSelectPreconditionCheck } from './battle-raid.utils';
+import { CREATED, COMPLETED, IN_PROGRESS, EXPIRED, violatesRoomSize, getPityCount, raidSelectPreconditionCheck } from './battle-raid.utils';
+import { raidBattleSettings } from "./battle-raid.logic.utils"
 import { getLocation } from './location';
-import { RaidBoss, bossPrizes, BOOSTED_SHINY, getAvailableBosses, bossHeldItem } from '@paas/shared/lib/raid-bosses';
+import { RaidBoss, bossPrizes, BOOSTED_SHINY, getAvailableBosses } from '@paas/shared/lib/raid-bosses';
 import { hasItem, awardItem, calculateNetWorth, addPokemon } from './users.utils';
 import { ItemId } from '@paas/shared/lib/items-list';
 import { timeOfDay } from './location.utils';
@@ -38,8 +34,8 @@ import { item, pkmn } from '@paas/shared/lib/sprites'
 import { EXPIRY_TIME } from '@paas/shared/lib/raid-settings'
 import { Notification, PublicRaidsDoc } from '@paas/shared/lib/server-types'
 import { typePrizes } from '@paas/shared/lib/raid-prizes'
-import {BattleOptions, execute, ExecuteLog} from '@paas/shared/lib/battle/battle-controller'
 import isDemo from '@paas/shared/lib/platform/isDemo'
+import { matchup } from './battle-raid.logic'
 
 const _db = admin.firestore()
 const db = salamander(_db)
@@ -630,89 +626,6 @@ export const raid_select = functions.https.onCall(async (data, context) => {
   }
   return 'OK'
 })
-
-function buffRaidBoss(opponentPokemon, rating) {
-  raidBattleSettings[rating].buff(opponentPokemon)
-}
-
-// There is no Mega Evolution exception here.
-export async function matchup(players: Badge[], heldItems: ItemId[], opponent: BadgeId, rating: number, location: Location): Promise<ExecuteLog> {
-  const playerPokemon = players.map((badge, index) => {
-    const data = {...Pkmn.get(badge.toLegacyString())} as PokemonDoc
-    const pkmn: Pokemon = {...data,
-      badge: badge,
-      fainted: false,
-      totalHp: (data.hp || 50) * 4,
-      currentHp: (data.hp || 50) * 4,
-      movepool: data.move.map(move => Movepool[move] || Movepool.Tackle),
-      heldItem: Inventory[heldItems[index]],
-      heldItemKey: heldItems[index] as ItemId,
-      heldItemConsumed: false,
-      heldItemTotallyConsumed: false,
-      statBuffs: {
-        attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0,
-        accuracy: 0, evasiveness: 0, criticalHit: 0,
-      },
-      targetingLogic: targetSelection[badge.personality.nature ?? 'Hardy'],
-      moveLogic: moveSelection[badge.personality.nature ?? 'Hardy'],
-      conditions: [{...ConditionMap.OnField}],
-    }
-    const {buff, nerf} = statAdjustment[badge.personality.nature ?? 'Hardy']
-    if (buff) {
-      pkmn[buff] *= 1.1
-    }
-    if (nerf) {
-      pkmn[nerf] /= 1.1
-    }
-    const size = badge.size
-    pkmn.weight *= {xxs: 0.8, xxl: 1.2, n: 1}[size ?? 'n']
-    return pkmn
-  })
-
-  const data = {...Pkmn.get(opponent)} as PokemonDoc
-  const bossHeldItemKey = bossHeldItem[opponent] || 'lum'
-  const opponentPokemon: Pokemon = {
-    ...Pkmn.get(opponent)!,
-    badge: Badge.fromLegacy(opponent),
-    fainted: false,
-    totalHp: (data.hp || 50) * 4,
-    currentHp: (data.hp || 50) * 4,
-    movepool: data.move.map(move => Movepool[move] || Movepool.Tackle),
-    heldItem: Inventory[bossHeldItemKey], // Hold Lum Berry or something else.
-    heldItemKey: bossHeldItemKey,
-    heldItemConsumed: false,
-    heldItemTotallyConsumed: false,
-    statBuffs: {
-      attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0,
-      accuracy: 0, evasiveness: 0, criticalHit: 1,
-    },
-    conditions: [{...ConditionMap.Raid}, {...ConditionMap.OnField}],
-  }
-  if (opponent.includes('-totem')) {
-    opponentPokemon.conditions.push({...ConditionMap.RaidTotem})
-  }
-  if (opponent.includes('-alpha')) {
-    opponentPokemon.conditions.push({...ConditionMap.RaidAlpha})
-  }
-  if (opponent.includes('-noble')) {
-    opponentPokemon.conditions.push({...ConditionMap.RaidNoble})
-  }
-  // Raid bosses have no explicit size modifier
-
-  // Buff Raid Boss
-  buffRaidBoss(opponentPokemon, rating)
-
-  const options: BattleOptions = {
-    opponentMoves: raidBattleSettings[rating].moves,
-    startMsg: `A ${opponentPokemon.species} has appeared and lets out a loud cry! It is dramatically larger than it should be!`,
-    lossMsg: `The ${opponentPokemon.species} was overwhelming!`,
-    victoryMsg: `The ${opponentPokemon.species} was defeated! It reverted to normal size!`,
-    moveLogic: raidBattleSettings[rating].moveLogic,
-    targetingLogic: raidBattleSettings[rating].targetingLogic,
-    pctLogs: [...raidBattleSettings[rating].pctLogs],
-  }
-  return execute(playerPokemon, [opponentPokemon], options, location, {fieldSize: -1, partySize: -1, maxWins: 0, mega: true, zmoves: true})
-}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function prizesPromise(raidId: string, raid: DbRaid, prizesMap: Record<any, any>, userId: string, result: any, mult: number) {

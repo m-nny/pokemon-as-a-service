@@ -16,7 +16,7 @@ import { forEveryUser } from './admin'
 import { ITEMS, ItemId } from '@paas/shared/lib/items-list'
 import { Badge } from '@paas/shared/lib/badge3'
 import { F } from '@paas/shared/lib/server-types'
-import { raidBattleSettings } from './battle-raid.utils'
+import { raidBattleSettings } from "./battle-raid.logic.utils";
 import { sendNotification } from './notifications'
 import { item } from '@paas/shared/lib/sprites'
 import { matchup, ExecuteLog, RESULT_PLAYER_VICTORY } from '@paas/shared/lib/battle/battle-controller'

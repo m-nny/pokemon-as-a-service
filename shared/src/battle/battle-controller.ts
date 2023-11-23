@@ -355,7 +355,7 @@ export function attack(params: AttackParams): Log {
   if (caster.currentHp <= 0) return log.debug('Caster fainted') // Pokémon fainted. Exit now.
   if (move === undefined) return log.debug('Move is undefined') // No move is used. Exit now.
   if (!target) {
-    console.warn('Target undefined', caster, move, prefix)
+    // console.warn('Target undefined', caster, move, prefix)
     return log.debug('Target does not exist')
   }
   move.failed = false
