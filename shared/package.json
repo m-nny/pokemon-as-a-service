@@ -26,6 +26,7 @@
   "scripts": {
     "build": "yarn build:only && yarn mkdir && yarn copy",
     "build:only": "tsc",
+    "build:dist": "tsc -p tsconfig-dist.json",
     "mkdir": "mkdir -p ../src/shared/pokemon",
     "copy": "cp ./lib/*.js ../src/shared && cp ./lib/pokemon/*.js ../src/shared/pokemon",
     "deploy": "",
