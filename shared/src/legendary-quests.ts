@@ -15,6 +15,7 @@ import { MoveId, MoveTypeMap } from "./gen/type-move-meta";
 import { calculateNetWorth } from "./events";
 import { MEGA_STONES, MEMORIES, Z_CRYSTALS } from "./prizes";
 import { toBase64 } from "./baseconv";
+import { preserveMetaFuncHoc } from "./hoc";
 
 export const CATCH_CHARM_GSC = 'LcyYjBeK4KAq1BkYgzlx'
 export const CATCH_CHARM_RSE = 'vJHZReab8dpsCgz6ixJy'
@@ -214,7 +215,8 @@ export function haveCaught(count: number) {
  * @param prefix The Pokemon's nat dex number, encoded as a base64 string
  * @returns true if this Pokemon appears, short-circuits
  */
-export function simpleRequirePotw(badge: BadgeId) {
+export const simpleRequirePotw = preserveMetaFuncHoc(
+  function simpleRequirePotw(badge: BadgeId) {
   const b64 = toBase64(new TeamsBadge(badge).id.toString(16).toUpperCase())
   return (req: Requirements) => {
     for (const k of req.pokemonKeys) {
@@ -223,7 +225,7 @@ export function simpleRequirePotw(badge: BadgeId) {
     }
     return false
   }
-}
+})
 
 export function simpleRequirePotwArr(badge: BadgeId[]) {
   const b64 = badge.map(b => toBase64(new TeamsBadge(b).id.toString(16).toUpperCase()))
@@ -310,7 +312,8 @@ export function requirePotwCount(badges: [BadgeId, Partial<Personality>][]) {
     badges.filter(b => complexRequirePotw(b[0], b[1])(req)).length
 }
 
-export function requireMove(move: MoveId, total = 1) {
+export const requireMove = preserveMetaFuncHoc(
+  function requireMove(move: MoveId, total = 1) {
   return (req: Requirements) => {
     const tempArr = req.teamsBadges
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -324,7 +327,7 @@ export function requireMove(move: MoveId, total = 1) {
     }
     return false
   }
-}
+})
 
 export function countType(type: Type) {
   return (req: Requirements) => {
@@ -361,13 +364,14 @@ export function requireType(type: Type, total: number) {
   }
 }
 
-export function requireItem(item: ItemId | ItemId[], count = 1): (req: Requirements) => boolean {
+export const requireItem = preserveMetaFuncHoc(
+  function requireItem(item: ItemId | ItemId[], count = 1): (req: Requirements) => boolean {
   if (Array.isArray(item)) {
     return (req: Requirements) =>
       item.filter(i => req.items[i] !== undefined && req.items[i]! >= count).length === item.length
   }
   return (req: Requirements) => req.items[item] !== undefined && req.items[item]! >= count
-}
+})
 
 export function countItem(item: ItemId[]): (req: Requirements) => number {
   return (req: Requirements) =>
