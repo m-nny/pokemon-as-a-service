@@ -205,10 +205,11 @@ export interface LegendaryQuest {
 
 const ONE_WEEK_ERR = `You sense a powerful force blocking your progress. Try again later.`
 
-export function haveCaught(count: number) {
+export const haveCaught = preserveMetaFuncHoc(
+  function haveCaught(count: number) {
   return (req: Requirements) => Object.values(req.pokemon)
   .reduce((prev, curr) => prev + curr) >= count
-}
+})
 
 /**
  * Verifies if you have a certain Pokemon in your collection using nat dex number only.
@@ -227,7 +228,8 @@ export const simpleRequirePotw = preserveMetaFuncHoc(
   }
 })
 
-export function simpleRequirePotwArr(badge: BadgeId[]) {
+export const simpleRequirePotwArr = preserveMetaFuncHoc(
+  function simpleRequirePotwArr(badge: BadgeId[]) {
   const b64 = badge.map(b => toBase64(new TeamsBadge(b).id.toString(16).toUpperCase()))
   const validArray = Array(badge.length).fill(false)
   return (req: Requirements) => {
@@ -241,7 +243,7 @@ export function simpleRequirePotwArr(badge: BadgeId[]) {
     }
     return false
   }
-}
+})
 
 export function complexRequirePotw(badge: BadgeId, personality: Partial<Personality>) {
   const pid = new TeamsBadge(badge).id
