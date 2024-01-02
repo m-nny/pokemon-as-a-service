@@ -349,7 +349,8 @@ export function countType(type: Type) {
   }
 }
 
-export function requireType(type: Type, total: number) {
+export const requireType = preserveMetaFuncHoc(
+  function requireType(type: Type, total: number) {
   return (req: Requirements) => {
     let count = 0
     for (const [key, c] of Object.entries(req.pokemon)) {
@@ -364,7 +365,7 @@ export function requireType(type: Type, total: number) {
     }
     return false
   }
-}
+});
 
 export const requireItem = preserveMetaFuncHoc(
   function requireItem(item: ItemId | ItemId[], count = 1): (req: Requirements) => boolean {
