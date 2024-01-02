@@ -307,10 +307,11 @@ export const countFor = preserveMetaFuncHoc(
   }
 });
 
-export function requirePotw(badges: [BadgeId, Partial<Personality>][]) {
+export const requirePotw = preserveMetaFuncHoc(
+  function requirePotw(badges: [BadgeId, Partial<Personality>][]) {
   return (req: Requirements) =>
     badges.every(b => complexRequirePotw(b[0], b[1])(req))
-}
+})
 
 export function requirePotwCount(badges: [BadgeId, Partial<Personality>][]) {
   return (req: Requirements) =>
