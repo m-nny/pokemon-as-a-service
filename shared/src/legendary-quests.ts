@@ -245,12 +245,13 @@ export const simpleRequirePotwArr = preserveMetaFuncHoc(
   }
 })
 
-export function complexRequirePotw(badge: BadgeId, personality: Partial<Personality>) {
+export const complexRequirePotw = preserveMetaFuncHoc(
+  function complexRequirePotw(badge: BadgeId, personality: Partial<Personality>) {
   const pid = new TeamsBadge(badge).id
   return (req: Requirements) => {
     return Badge.quickMatch(pid, personality, Object.keys(req.pokemon) as PokemonId[])
   }
-}
+})
 
 type BidQuestFilter = (badge: BadgeId) => boolean | undefined;
 type LegacyQuestFilter = (badge: TeamsBadge) => boolean | undefined;
