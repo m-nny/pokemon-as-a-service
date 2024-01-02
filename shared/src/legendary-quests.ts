@@ -290,7 +290,8 @@ export const countForLegacy = preserveMetaFuncHoc(
   }
 })
 
-export function countFor(filter: QuestFilter, total = 1) {
+export const countFor = preserveMetaFuncHoc(
+  function countFor(filter: QuestFilter, total = 1) {
   return (req: Requirements) => {
     const tempArr = req.pokemonBadges
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -304,7 +305,7 @@ export function countFor(filter: QuestFilter, total = 1) {
     }
     return false
   }
-}
+});
 
 export function requirePotw(badges: [BadgeId, Partial<Personality>][]) {
   return (req: Requirements) =>
