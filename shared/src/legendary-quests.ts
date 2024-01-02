@@ -256,7 +256,8 @@ type BidQuestFilter = (badge: BadgeId) => boolean | undefined;
 type LegacyQuestFilter = (badge: TeamsBadge) => boolean | undefined;
 type QuestFilter = (badge: Badge) => boolean | undefined;
 
-export function countForBid(filter: BidQuestFilter, total = 1) {
+export const countForBid = preserveMetaFuncHoc(
+  function countForBid(filter: BidQuestFilter, total = 1) {
   return (req: Requirements) => {
     const tempArr = req.teamsBadges
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -270,7 +271,7 @@ export function countForBid(filter: BidQuestFilter, total = 1) {
     }
     return false
   }
-}
+})
 
 export const countForLegacy = preserveMetaFuncHoc(
   function countForLegacy(filter: LegacyQuestFilter, total = 1) {
